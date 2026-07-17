@@ -1,2 +1,41 @@
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Register your custom Altigo theme variables directly in v4 */
+  --color-altigo-teal:  #3B9CC9;
+  --color-altigo-teal-hover: #0b6e85;
+  
+  /* Dynamic tokens that swap based on the active theme */
+  --color-altigo-bg: var(--bg);
+  --color-altigo-surface: var(--surface);
+  --color-altigo-text: var(--text-main);
+  --color-altigo-muted: var(--text-muted);
+  --color-altigo-border: var(--border-color);
+}
+
+/* Light Mode Defaults */
+:root {
+  --bg: #F5F7FA;          /* Soft Alabaster White */
+  --surface: #FFFFFF;     /* Pure White for cards */
+  --text-main: #0A0B0D;   /* Rich Obsidian Black */
+  --text-muted: #626875;  /* Deep slate gray */
+  --border-color: #E4E7EC;/* Subtle gray border */
+}
+
+/* Dark Mode (When .dark class is added to <html> or <body>) */
+.dark {
+  --bg: #0A0B0D;          /* Rich Obsidian Black */
+  --surface: #12141C;     /* Tech-wear dark gray */
+  --text-main: #F5F7FA;   /* Soft Alabaster White */
+  --text-muted: #8E95A5;  /* Light slate gray */
+  --border-color: #1E222B;/* Dark structural border */
+}
+
+/* Base element styling using Tailwind utility layer rules */
+@layer base {
+  body {
+    background-color: var(--color-altigo-bg);
+    color: var(--color-altigo-text);
+    transition: background-color 300ms, color 300ms;
+  }
+}
