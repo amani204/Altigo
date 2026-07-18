@@ -7,6 +7,7 @@ import HowToOrder from './sections/HowtoOrder'
 import FAQ from './sections/FAQ'
 import ContactForm from './sections/ContactForm'
 import ProductGallery from './sections/ProductGallery'
+import WhatsAppButton from './components/layout/WhatsAppButton'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,6 +22,7 @@ function App() {
      <FAQ />
      <ContactForm />
      <Footer />
+     <WhatsAppButton/>
        
     </>
   )
