@@ -214,9 +214,13 @@ export default function Navbar() {
             ref={(el) => (mobileLinksRef.current[navLinks.length] = el)}
             className="flex flex-col gap-6 pt-6 border-t border-altigo-border/50 w-full"
           >
-            <PrimaryButton href="#contact" onClick={(e) => handleScroll(e, "#contact")} className="w-full justify-center py-4.5 text-lg font-semibold shadow-lg">
-              {t?.nav?.orderNow || 'Order Now'} 
-            </PrimaryButton>
+            <a
+  href="#contact"
+  onClick={(e) => handleScroll(e, "#contact")}
+  className="inline-flex items-center justify-center w-full px-6 py-4 text-lg font-semibold text-altigo-bg bg-altigo-teal rounded-[5px] shadow-lg shadow-altigo-teal/30 hover:bg-altigo-teal-hover hover:shadow-xl hover:shadow-altigo-teal/40 transition-all duration-300"
+>
+  {t?.nav?.orderNow || 'Order Now'}
+</a>
 
             {/* Premium Instagram Button */}
             <div className="flex items-center justify-center">
