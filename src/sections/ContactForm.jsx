@@ -5,7 +5,7 @@ import { z } from "zod";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Send, CheckCircle2, User, Phone, Ruler, Package, MessageSquare, ChevronDown, ChevronUp } from "lucide-react";
+import { Send, CheckCircle2, User, Phone, Ruler, Package, MessageSquare, ChevronDown, ChevronUp, MapPin } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import PrimaryButton from "../components/ui/PrimaryButton";
 
@@ -25,6 +25,8 @@ const sizeData = [
 const contactSchema = z.object({
   name: z.string().trim().min(2, "min2").max(100),
   phone: z.string().trim().min(9, "phoneInvalid").max(15, "phoneInvalid").regex(/^[0-9+ ]+$/, "phoneInvalid"),
+  wilaya: z.string().trim().min(2, "wilayaRequired").max(50),
+  region: z.string().trim().min(2, "regionRequired").max(50),
   size: z.enum(["S", "M", "L", "XL", "XXL"], { errorMap: () => ({ message: "sizeRequired" }) }),
   quantity: z.coerce.number().int().min(1).max(10),
   message: z.string().trim().max(500).optional(),
@@ -69,6 +71,8 @@ export default function ContactForm() {
       ``,
       ` ${t.contact.name}: ${data.name}`,
       `${t.contact.phone}: ${data.phone}`,
+      `${t.contact.wilaya}: ${data.wilaya}`,
+      `${t.contact.region}: ${data.region}`,
       `${t.contact.size}: ${data.size}`,
       `${t.contact.quantity}: ${data.quantity}`,
     ];
@@ -138,6 +142,37 @@ export default function ContactForm() {
             {errors.phone && <p className="text-xs text-red-500 mt-1">{t.contact.errors.phone}</p>}
           </div>
 
+          {/* Wilaya + Region */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-1.5">
+              <label className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-altigo-muted">
+                <MapPin size={14} className="text-altigo-teal" />
+                {t.contact.wilaya}
+              </label>
+              <input
+                {...register("wilaya")}
+                type="text"
+                placeholder={t.contact.wilayaPlaceholder}
+                className="w-full px-5 py-3.5 rounded-xl bg-altigo-bg border border-altigo-border focus:ring-2 focus:ring-altigo-teal/20 outline-none transition-all duration-300 text-sm text-altigo-text"
+              />
+              {errors.wilaya && <p className="text-xs text-red-500 mt-1">{t.contact.errors.wilaya}</p>}
+            </div>
+
+            <div className="space-y-1.5">
+              <label className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-altigo-muted">
+                <MapPin size={14} className="text-altigo-teal" />
+                {t.contact.region}
+              </label>
+              <input
+                {...register("region")}
+                type="text"
+                placeholder={t.contact.regionPlaceholder}
+                className="w-full px-5 py-3.5 rounded-xl bg-altigo-bg border border-altigo-border focus:ring-2 focus:ring-altigo-teal/20 outline-none transition-all duration-300 text-sm text-altigo-text"
+              />
+              {errors.region && <p className="text-xs text-red-500 mt-1">{t.contact.errors.region}</p>}
+            </div>
+          </div>
+
           {/* Size + Quantity + Size Guide Toggle */}
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5">
@@ -187,9 +222,10 @@ export default function ContactForm() {
             </div>
           </div>
 
-          {/* Size Guide Table (toggled) */}
+          {/* Size Guide Table (toggled) – unchanged */}
           {showSizeGuide && (
             <div className="space-y-4 p-4 rounded-xl bg-altigo-bg/70 border border-altigo-border/50">
+              {/* ... same as before ... */}
               <div className="flex items-center justify-between">
                 <h4 className="text-sm font-semibold text-altigo-text">
                   {t.sizeGuide?.title || "Size Guide"}
@@ -240,7 +276,6 @@ export default function ContactForm() {
                 {t.sizeGuide?.note || "All measurements are in centimeters (cm)."}
               </p>
 
-              {/* Instructions */}
               {t.sizeGuide?.instructions && (
                 <div className="mt-2 pt-2 border-t border-altigo-border/30">
                   <h5 className="text-xs font-semibold text-altigo-text mb-2">
