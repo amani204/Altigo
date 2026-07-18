@@ -10,7 +10,7 @@ export default function Footer() {
 
   const whatsappNumber = "+213672086781"; 
   const whatsappLink = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}`;
-  const instagramLink = "https://www.instagram.com/altigo.dz/"; // Update with your actual handle
+  const instagramLink = "https://www.instagram.com/altigo_dz/"; 
 
   const navLinks = [
     { key: "home", href: "#home", label: "Home" },
@@ -108,7 +108,7 @@ export default function Footer() {
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                   </svg>
-                  <span>@altigo.dz</span>
+                  <span>@altigo_dz</span>
                 </a>
               </li>
 

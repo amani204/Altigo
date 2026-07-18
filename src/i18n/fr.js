@@ -130,6 +130,28 @@ footer: {
   subscribe: "S'abonner",
   rights: "Tous droits réservés.",
   location: "Partout où l'aventure vit",
+},
+sizeGuide: {
+  title: "GUIDE DES TAILLES",
+  subtitle: "PANTALON ALTIGO",
+  prompt: "Trouvez votre taille idéale",
+  note: "Toutes les mesures sont en centimètres (cm).",
+  columns: {
+    size: "Taille",
+    waist: "Taille (الخصر)",
+    hips: "Hanches (الأرداف)",
+    inseam: "Entrejambe (منطقة الحجر)",
+    thigh: "Cuisse (الفخذ)",
+    length: "Longueur (الطول)"
+  },
+  instructions: {
+    title: "COMMENT PRENDRE VOS MESURES ?",
+    waist: "Mesurez la largeur de la taille à plat.",
+    hips: "Mesurez la largeur des hanches à l'endroit le plus fort.",
+    inseam: "Mesurez la largeur de la zone d'entrejambe (pour une jambe).",
+    thigh: "Mesurez la largeur de la cuisse (pour une jambe).",
+    length: "Mesurez la longueur totale du pantalon."
+  }
 }
 };
 

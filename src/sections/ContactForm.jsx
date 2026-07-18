@@ -5,7 +5,7 @@ import { z } from "zod";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Send, CheckCircle2, User, Phone, Ruler, Package, MessageSquare } from "lucide-react";
+import { Send, CheckCircle2, User, Phone, Ruler, Package, MessageSquare, ChevronDown, ChevronUp } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import PrimaryButton from "../components/ui/PrimaryButton";
 
@@ -13,6 +13,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 const WHATSAPP_NUMBER = "213672086781";
 const sizes = ["S", "M", "L", "XL", "XXL"];
+
+// 📏 Size guide data (in cm)
+const sizeData = [
+  { size: "S", waist: 32, hips: 50, inseam: 32, thigh: 30, length: 108 },
+  { size: "M", waist: 34, hips: 55, inseam: 34, thigh: 32, length: 110 },
+  { size: "L", waist: 36, hips: 58, inseam: 35, thigh: 33, length: 111 },
+  { size: "XL", waist: 37, hips: 62, inseam: 36, thigh: 34, length: 114 },
+];
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, "min2").max(100),
@@ -25,6 +33,7 @@ const contactSchema = z.object({
 export default function ContactForm() {
   const { t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
+  const [showSizeGuide, setShowSizeGuide] = useState(false);
   const sectionRef = useRef(null);
 
   const {
@@ -91,9 +100,10 @@ export default function ContactForm() {
             {t.contact.description}
           </p>
         </div>
+
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className=" relative p-8 rounded-[5px] bg-altigo-surface/80 backdrop-blur-sm border border-altigo-border shadow-xl shadow-altigo-teal/5 space-y-6 transition-all hover:shadow-2xl hover:shadow-altigo-teal/10"
+          className="relative p-8 rounded-[5px] bg-altigo-surface/80 backdrop-blur-sm border border-altigo-border shadow-xl shadow-altigo-teal/5 space-y-6 transition-all hover:shadow-2xl hover:shadow-altigo-teal/10"
           style={{ opacity: 1 }}
         >
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-1 bg-altigo-teal/30 rounded-b-full" />
@@ -114,27 +124,41 @@ export default function ContactForm() {
           </div>
 
           {/* Phone */}
-          <div className="space-y-1.5" >
-            <label className=" flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-altigo-muted">
+          <div className="space-y-1.5">
+            <label className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-altigo-muted">
               <Phone size={14} className="text-altigo-teal" />
               {t.contact.phone}
             </label>
             <input
-  {...register("phone")}
-  type="tel"
-  dir="ltr"
-  className="w-full px-5 py-3.5 rounded-xl bg-altigo-bg border border-altigo-border focus:ring-2 focus:ring-altigo-teal/20 outline-none transition-all duration-300 text-sm text-altigo-text  placeholder:text-right"
-/>
+              {...register("phone")}
+              type="tel"
+              dir="ltr"
+              className="w-full px-5 py-3.5 rounded-xl bg-altigo-bg border border-altigo-border focus:ring-2 focus:ring-altigo-teal/20 outline-none transition-all duration-300 text-sm text-altigo-text placeholder:text-right"
+            />
             {errors.phone && <p className="text-xs text-red-500 mt-1">{t.contact.errors.phone}</p>}
           </div>
 
-          {/* Size + Quantity */}
+          {/* Size + Quantity + Size Guide Toggle */}
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <label className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-altigo-muted">
-                <Ruler size={14} className="text-altigo-teal" />
-                {t.contact.size}
-              </label>
+              <div className="flex items-center justify-between">
+                <label className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-altigo-muted">
+                  <Ruler size={14} className="text-altigo-teal" />
+                  {t.contact.size}
+                </label>
+                <button
+                  type="button"
+                  onClick={() => setShowSizeGuide(!showSizeGuide)}
+                  className="text-xs text-altigo-teal hover:text-altigo-teal-hover transition-colors flex items-center gap-1"
+                >
+                  {showSizeGuide ? (
+                    <ChevronUp size={14} />
+                  ) : (
+                    <ChevronDown size={14} />
+                  )}
+                  {t.sizeGuide?.prompt || "Size Guide"}
+                </button>
+              </div>
               <select
                 {...register("size")}
                 defaultValue=""
@@ -163,6 +187,77 @@ export default function ContactForm() {
             </div>
           </div>
 
+          {/* Size Guide Table (toggled) */}
+          {showSizeGuide && (
+            <div className="space-y-4 p-4 rounded-xl bg-altigo-bg/70 border border-altigo-border/50">
+              <div className="flex items-center justify-between">
+                <h4 className="text-sm font-semibold text-altigo-text">
+                  {t.sizeGuide?.title || "Size Guide"}
+                </h4>
+                <span className="text-xs text-altigo-muted">{t.sizeGuide?.subtitle || ""}</span>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm text-altigo-text border-collapse">
+                  <thead>
+                    <tr className="border-b border-altigo-border/50">
+                      <th className="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-altigo-muted">
+                        {t.sizeGuide?.columns?.size || "Size"}
+                      </th>
+                      <th className="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-altigo-muted">
+                        {t.sizeGuide?.columns?.waist || "Waist"}
+                      </th>
+                      <th className="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-altigo-muted">
+                        {t.sizeGuide?.columns?.hips || "Hips"}
+                      </th>
+                      <th className="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-altigo-muted">
+                        {t.sizeGuide?.columns?.inseam || "Inseam"}
+                      </th>
+                      <th className="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-altigo-muted">
+                        {t.sizeGuide?.columns?.thigh || "Thigh"}
+                      </th>
+                      <th className="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-altigo-muted">
+                        {t.sizeGuide?.columns?.length || "Length"}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sizeData.map((row) => (
+                      <tr key={row.size} className="border-b border-altigo-border/30 last:border-0 hover:bg-altigo-surface/30 transition-colors">
+                        <td className="px-3 py-2 font-medium">{row.size}</td>
+                        <td className="px-3 py-2">{row.waist}</td>
+                        <td className="px-3 py-2">{row.hips}</td>
+                        <td className="px-3 py-2">{row.inseam}</td>
+                        <td className="px-3 py-2">{row.thigh}</td>
+                        <td className="px-3 py-2">{row.length}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <p className="text-xs text-altigo-muted/70 italic">
+                {t.sizeGuide?.note || "All measurements are in centimeters (cm)."}
+              </p>
+
+              {/* Instructions */}
+              {t.sizeGuide?.instructions && (
+                <div className="mt-2 pt-2 border-t border-altigo-border/30">
+                  <h5 className="text-xs font-semibold text-altigo-text mb-2">
+                    {t.sizeGuide.instructions.title}
+                  </h5>
+                  <ul className="space-y-1 text-xs text-altigo-muted list-disc list-inside">
+                    <li>{t.sizeGuide.instructions.waist}</li>
+                    <li>{t.sizeGuide.instructions.hips}</li>
+                    <li>{t.sizeGuide.instructions.inseam}</li>
+                    <li>{t.sizeGuide.instructions.thigh}</li>
+                    <li>{t.sizeGuide.instructions.length}</li>
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+
           {/* Message */}
           <div className="space-y-1.5">
             <label className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-altigo-muted">
@@ -178,14 +273,14 @@ export default function ContactForm() {
           </div>
           
           <div className="flex justify-center">
-  <PrimaryButton
-    type="submit"
-    disabled={isSubmitting}
-    className="w-full sm:w-auto sm:min-w-[280px] py-4 text-base font-semibold shadow-lg shadow-altigo-teal/20 hover:shadow-xl hover:shadow-altigo-teal/30 transition-all duration-300"
-  >
-    {submitted ? <>{t.contact.sent}</> : <>{t.contact.submit}</>}
-  </PrimaryButton>
-</div>
+            <PrimaryButton
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full sm:w-auto sm:min-w-[280px] py-4 text-base font-semibold shadow-lg shadow-altigo-teal/20 hover:shadow-xl hover:shadow-altigo-teal/30 transition-all duration-300"
+            >
+              {submitted ? <>{t.contact.sent}</> : <>{t.contact.submit}</>}
+            </PrimaryButton>
+          </div>
            
           <p className="text-xs text-center text-altigo-muted/70 flex items-center justify-center gap-1">
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-altigo-teal/30" />
