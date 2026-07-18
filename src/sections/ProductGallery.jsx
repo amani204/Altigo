@@ -1,24 +1,24 @@
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react"; 
+import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import PrimaryButton from "../components/ui/PrimaryButton"; 
 
+import img1 from "../assets/p2.PNG";
+import img2 from "../assets/p3.PNG";
+import img3 from "../assets/p11.png";
+import img4 from "../assets/p6.jpg";
 
-import img1 from "/src/assets/p2.png";
-import img2 from "/src/assets/p3.png";
-import img3 from "/src/assets/p11.png";
-import img4 from "/src/assets/p6.jpg";
+import vid1 from "../assets/v1.mp4";
+import vid2 from "../assets/v3.mp4";
 
-import vid1 from "/src/assets/v1.mp4";
-import vid2 from "/src/assets/v3.mp4";
 gsap.registerPlugin(ScrollTrigger);
 
-// Updated gallery array: 4 images + 2 videos
 const galleryItems = [
   { id: 1, type: "image", src: img1, label: "1" },
   { id: 2, type: "image", src: img2, label: "2" },
-  { id: 3, type: "video", src: vid1, poster: img1, label: "3" }, // video uses poster
+  { id: 3, type: "video", src: vid1, poster: img1, label: "3" },
   { id: 4, type: "image", src: img3, label: "4" },
   { id: 5, type: "video", src: vid2, poster: img2, label: "5" },
   { id: 6, type: "image", src: img4, label: "6" },
@@ -27,7 +27,7 @@ const galleryItems = [
 export default function ProductGallery() {
   const { t, isRTL } = useLanguage();
   const [active, setActive] = useState(0);
-  
+
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
   const eyebrowRef = useRef(null);
@@ -36,9 +36,8 @@ export default function ProductGallery() {
   const mainContainerRef = useRef(null);
   const thumbnailsRef = useRef([]);
   const galleryContainerRef = useRef(null);
-  const videoRefs = useRef({}); // to store video elements
+  const videoRefs = useRef({});
 
-  // (GSAP animations – unchanged)
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.from(eyebrowRef.current, {
@@ -115,23 +114,20 @@ export default function ProductGallery() {
           scrub: 1,
         },
       });
-
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  // Handle active change – animate and control video
   useEffect(() => {
-    // Animate main container (unchanged)
     if (mainContainerRef.current) {
-      gsap.fromTo(mainContainerRef.current,
+      gsap.fromTo(
+        mainContainerRef.current,
         { opacity: 0.5, scale: 0.95 },
         { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" }
       );
     }
 
-    // Video playback control
     const activeItem = galleryItems[active];
     Object.keys(videoRefs.current).forEach((key) => {
       const video = videoRefs.current[key];
@@ -165,7 +161,7 @@ export default function ProductGallery() {
       </div>
 
       <div className="mx-auto max-w-7xl px-5 lg:px-8 relative z-10">
-        {/* Header – unchanged */}
+        {/* Header */}
         <div ref={headerRef} className="text-center mb-16">
           <div
             ref={eyebrowRef}
@@ -187,7 +183,7 @@ export default function ProductGallery() {
           </p>
         </div>
 
-        {/* Gallery – unchanged grid */}
+        {/* Gallery grid */}
         <div
           ref={galleryContainerRef}
           className="grid lg:grid-cols-[1fr_500px] gap-4"
@@ -197,7 +193,6 @@ export default function ProductGallery() {
             ref={mainContainerRef}
             className="relative aspect-4/5 rounded-[5px] overflow-hidden bg-altigo-surface border border-altigo-border shadow-card"
           >
-            {/* 👇 Conditional rendering: image or video */}
             {galleryItems[active].type === "video" ? (
               <video
                 ref={(el) => {
@@ -218,13 +213,11 @@ export default function ProductGallery() {
               />
             )}
 
-            {/* Label badge – add video indicator */}
             <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-altigo-bg/70 backdrop-blur text-xs font-medium text-altigo-text">
               {galleryItems[active].label || `Item ${active + 1}`}
               {galleryItems[active].type === "video" && " 🎬"}
             </div>
 
-            {/* Navigation arrows – unchanged */}
             <button
               onClick={prevSlide}
               className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-altigo-bg/70 backdrop-blur flex items-center justify-center text-altigo-text hover:bg-altigo-bg/90 transition-colors duration-300"
@@ -240,7 +233,6 @@ export default function ProductGallery() {
               <ChevronRight size={20} />
             </button>
 
-            {/* Progress dots – unchanged */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
               {galleryItems.map((_, i) => (
                 <button
@@ -255,7 +247,7 @@ export default function ProductGallery() {
             </div>
           </div>
 
-          {/* Thumbnails – unchanged, but with video poster and play overlay */}
+          {/* Thumbnails */}
           <div className="grid grid-cols-3 lg:grid-cols-2 gap-1.5">
             {galleryItems.map((item, i) => (
               <button
@@ -285,6 +277,13 @@ export default function ProductGallery() {
               </button>
             ))}
           </div>
+        </div>
+
+        {/*  CTA Button – "Commander" */}
+        <div className="mt-12 text-center">
+          <PrimaryButton href="#contact" className="inline-flex">
+            {t?.nav?.orderNow || "Commander"}
+          </PrimaryButton>
         </div>
       </div>
     </section>

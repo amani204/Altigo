@@ -1,16 +1,17 @@
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
 import { useTheme } from "../../context/ThemeContext"; 
 import logo1 from "../../assets/logo1.png"; 
 import logo2 from "../../assets/logo2.png"; 
 
 export default function Footer() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const { theme } = useTheme(); 
 
   const whatsappNumber = "+213672086781"; 
   const whatsappLink = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}`;
-  
+  const instagramLink = "https://www.instagram.com/altigo.dz/"; // Update with your actual handle
+
   const navLinks = [
     { key: "home", href: "#home", label: "Home" },
     { key: "product", href: "#product", label: "Product" },
@@ -69,6 +70,7 @@ export default function Footer() {
               {t?.footer?.contact || "Contact"}
             </h3>
             <ul className="space-y-3">
+              {/* WhatsApp */}
               <li>
                 <a
                   href={whatsappLink}
@@ -80,8 +82,37 @@ export default function Footer() {
                   <span>{whatsappNumber}</span>
                 </a>
               </li>
+
+              {/* Instagram */}
               <li>
+                <a
+                  href={instagramLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm text-altigo-muted hover:text-altigo-teal transition-colors duration-300 group"
+                >
+                  {/* Custom SVG Instagram Icon structured like Lucide tokens */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-altigo-teal group-hover:scale-110 transition-transform duration-300"
+                  >
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                  <span>@altigo.dz</span>
+                </a>
               </li>
+
+              {/* Location */}
               <li>
                 <div className="flex items-center gap-3 text-sm text-altigo-muted">
                   <MapPin size={16} className="text-altigo-teal" />
@@ -111,7 +142,6 @@ export default function Footer() {
               </a>
             </span>
             <span className="w-px h-4 bg-altigo-border/50" />
-        
           </div>
         </div>
       </div>

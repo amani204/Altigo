@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Wind, Shield, Zap, Feather, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
-import detail2 from "/src/assets/detail-2.PNG";
+import detail2 from "../assets/detail-2.PNG";
 
 gsap.registerPlugin(ScrollTrigger);
 
