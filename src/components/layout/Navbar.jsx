@@ -221,7 +221,7 @@ export default function Navbar() {
             {/* Premium Instagram Button */}
             <div className="flex items-center justify-center">
               <a 
-                href="https://instagram.com" 
+                 href="https://www.instagram.com/altigo_dz"
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 w-full py-3.5 rounded-[5px] border border-altigo-border text-altigo-muted hover:text-altigo-text hover:border-altigo-teal transition-all duration-300 text-base font-medium bg-altigo-surface/30"

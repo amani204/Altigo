@@ -132,7 +132,7 @@ footer: {
 sizeGuide: {
   title: "دليل المقاسات",
   subtitle: "سروال ألتيجو",
-  prompt: "جد مقاسك المثالي",
+  prompt: "دليل المقاسات",
   note: "جميع المقاسات بالسنتيمتر (cm).",
   columns: {
     size: "المقاس",

@@ -134,7 +134,7 @@ footer: {
 sizeGuide: {
   title: "GUIDE DES TAILLES",
   subtitle: "PANTALON ALTIGO",
-  prompt: "Trouvez votre taille idéale",
+  prompt: "guide des tailles",
   note: "Toutes les mesures sont en centimètres (cm).",
   columns: {
     size: "Taille",
