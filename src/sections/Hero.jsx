@@ -7,9 +7,9 @@ import SecondaryButton from "../components/ui/SecondaryButton";
 import { Star } from "lucide-react";
 
 // Background assets – replace with your own
-import imageLeft from "../assets/detail-2.PNG";
-import centerVideo from "../assets/v2.mp4";
-import imageRight from "../assets/detail-2.PNG";
+import imageLeft from "/src/assets/detail-2.PNG";
+import centerVideo from "/src/assets/v2.mp4";
+import imageRight from "/src/assets/detail-2.PNG";
 
 export default function Hero() {
   const { t } = useLanguage();

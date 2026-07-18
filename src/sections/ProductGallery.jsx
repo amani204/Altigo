@@ -1,19 +1,17 @@
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react"; // added Play icon
+import { ChevronLeft, ChevronRight, Play } from "lucide-react"; 
 import { useLanguage } from "../context/LanguageContext";
 
-// Import your images
-import img1 from "../assets/p2.png";
-import img2 from "../assets/p3.png";
-import img3 from "../assets/p11.png";
-import img4 from "../assets/p6.jpg";
 
-// 👇 ADD YOUR VIDEO IMPORTS HERE (change names to match your files)
-import vid1 from "../assets/v1.mp4";
-import vid2 from "../assets/v3.mp4";
+import img1 from "/src/assets/p2.png";
+import img2 from "/src/assets/p3.png";
+import img3 from "/src/assets/p11.png";
+import img4 from "/src/assets/p6.jpg";
 
+import vid1 from "/src/assets/v1.mp4";
+import vid2 from "/src/assets/v3.mp4";
 gsap.registerPlugin(ScrollTrigger);
 
 // Updated gallery array: 4 images + 2 videos
