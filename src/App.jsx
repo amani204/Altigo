@@ -5,7 +5,8 @@ import Footer from './components/layout/Footer'
 import Features from './sections/Features'
 import HowToOrder from './sections/HowtoOrder'
 import FAQ from './sections/FAQ'
-
+import ContactForm from './sections/ContactForm'
+import ProductGallery from './sections/ProductGallery'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,9 +15,11 @@ function App() {
     <>
     <Navbar/>
      <Hero/>
+     <ProductGallery />
      <Features />
      <HowToOrder/> 
      <FAQ />
+     <ContactForm />
      <Footer />
        
     </>

@@ -7,33 +7,57 @@ const fr = {
     contact: "Contact",
     orderNow: "Commander",
   },
-  hero: {
-    title: "Bougez sans limites",
+   hero: {
+  badge: "NOUVEAUTÉ — ÉDITION LIMITÉE",
+   title: "Bougez sans limites",
     subtitle: "Découvrez le nouveau pantalon de sport Altigo",
-    cta: "Découvrir",
-  },
+  cta: "Commander",
+  secondaryCta: "Voir le produit",
+  athletes: "athlètes",
+  qualityBadge: "Haute qualité",
+  shipping: "Livraison gratuite",
+},
   gallery: {
-    title: "Notre produit",
+    eyebrow: "Notre produit",
+    title: "Découvrez chaque détail.",
+    description: "Chaque angle, chaque détail — pensé pour la performance et le style.",
   },
-  features: {
-    eyebrow: "Détails produit",
-    title: "Conçu pour bouger.",
-    description: "Chaque point de couture, chaque fibre, chaque détail pensé pour votre confort.",
+ features: {
+    eyebrow: "MOVE WITH CONFIDENCE",
+    title: "Altigo = Altitude + Go",
+    description:
+      "Plus qu'un simple nom, c'est un style de vie. Chez Altigo, nous croyons que chaque femme mérite de se sentir confiante, à l'aise et élégante à chaque pas de son aventure. Nous vous proposons des vêtements de sport qui allient qualité, haute performance et design moderne pour vous accompagner dans vos défis quotidiens et sportifs.",
+
     items: {
-      lightweight: { title: "Tissu léger", desc: "Une matière respirante qui vous accompagne à chaque mouvement." },
-      moistureWicking: { title: "Anti-humidité", desc: "Évacue la transpiration pour rester au sec et confortable." },
-      stretch: { title: "Extensible 4 sens", desc: "Une liberté de mouvement totale, sans aucune restriction." },
-      durable: { title: "Résistant", desc: "Des coutures renforcées conçues pour durer." },
+      quality: {
+        title: "Haute qualité",
+        desc: "Des matériaux premium pour une durabilité exceptionnelle.",
+      },
+      comfort: {
+        title: "Confort parfait",
+        desc: "Une sensation de bien-être toute la journée, sans compromis.",
+      },
+      performance: {
+        title: "Performance & mouvement",
+        desc: "Conçu pour libérer votre potentiel athlétique.",
+      },
+      design: {
+        title: "Design moderne",
+        desc: "Un style contemporain qui allie esthétique et fonctionnalité.",
+      },
     },
-    whyTitle: "Pourquoi Altigo",
-    whyDescription: "Altigo est né d'une idée simple : le sportswear ne doit jamais sacrifier le confort au style. Chaque détail est pensé pour suivre votre rythme.",
+
+    whyTitle: "POURQUOI ALTIGO",
+    whyDescription:
+      "Altigo = Altitude + Go. Élevez vos ambitions, bougez avec confiance. Vivez votre aventure.",
     whyPoints: [
-      "Conçu pour un usage quotidien et sportif",
-      "Production en série limitée",
-      "Tissu sélectionné avec soin",
-      "Échange facile sous 7 jours",
+      "Conçu par des athlètes, pour des athlètes",
+      "Production en édition limitée – jamais de grande série",
+      "Tissus premium sourcés éthiquement",
+     
     ],
   },
+
   howToOrder: {
     eyebrow: "Comment ça marche",
     title: "Trois étapes. C'est tout.",
@@ -47,41 +71,55 @@ const fr = {
     title: "Questions fréquentes",
     items: {
       q1: {
-        q: "Quelles tailles proposez-vous ?",
-        a: "Nous proposons des tailles S à XXL. Consultez notre guide des tailles pour trouver votre taille idéale — la coupe est ajustée, en cas de doute prenez une taille au-dessus.",
+        q: "Quelles sont les tailles disponibles ?",
+        a: "Nous proposons les tailles S, M, L et XL. Le produit est importé et disponible dans des coupes précises — consultez le guide des tailles pour choisir celle qui vous convient.",
       },
       q2: {
-        q: "Quels sont les délais de livraison ?",
-        a: "Les commandes sont expédiées sous 48h. La livraison prend généralement entre 2 et 5 jours ouvrables selon votre wilaya.",
+        q: "Quel est le prix du produit ?",
+        a: "Le prix du pantalon de sport est de 34 000 DZD. Un tarif très compétitif pour une qualité supérieure et un design moderne.",
       },
       q3: {
-        q: "Quels modes de paiement acceptez-vous ?",
-        a: "Le paiement à la livraison (COD) est disponible partout en Algérie. D'autres options de paiement seront ajoutées prochainement.",
+        q: "Quelles sont les couleurs disponibles ?",
+        a: "Le pantalon est disponible en 6 couleurs différentes. Actuellement, la couleur noire est en stock, les autres couleurs arrivent très prochainement.",
       },
       q4: {
-        q: "Puis-je échanger ou retourner mon article ?",
-        a: "Oui, les échanges sont possibles sous 7 jours si l'article n'a pas été porté et qu'il est dans son emballage d'origine.",
+        q: "Quels sont les délais de livraison ?",
+        a: "Nous livrons dans l'ensemble des 69 wilayas. Les délais de livraison varient entre 2 et 5 jours ouvrables selon la région.",
       },
       q5: {
-        q: "Comment vous contacter pour une question sur ma commande ?",
-        a: "Le moyen le plus rapide est de nous écrire directement sur WhatsApp via le bouton flottant, ou de remplir le formulaire de contact.",
+        q: "Le produit est-il authentique et importé ?",
+        a: "Oui, le produit est importé avec une qualité premium, fabriqué à partir de tissus haut de gamme pour garantir confort et durabilité.",
       },
       q6: {
         q: "Comment entretenir le pantalon ?",
-        a: "Lavage en machine à froid, séchage à l'air libre recommandé pour préserver le tissu et sa forme dans le temps.",
+        a: "Lavez-le en machine à l'eau froide et séchez-le à l'air libre de préférence pour préserver le tissu et sa forme plus longtemps.",
       },
     },
   },
   contact: {
-    title: "Passer commande",
-    name: "Nom complet",
-    phone: "Numéro de téléphone",
-    size: "Taille",
-    quantity: "Quantité",
-    message: "Message (optionnel)",
-    submit: "Envoyer la commande",
+  eyebrow: "CONTACT",
+  title: "Passez votre commande",
+  description: "Remplissez le formulaire et nous vous répondons sous 2 heures sur WhatsApp.",
+  name: "Nom complet",
+  namePlaceholder: "ex: sarah A",
+  phone: "Téléphone",
+  phonePlaceholder: "ex: 0555123456",
+  size: "Taille",
+  sizePlaceholder: "Choisissez",
+  quantity: "Quantité",
+  message: "Message (facultatif)",
+  messagePlaceholder: "Une question ? Une précision ? Dites-nous tout.",
+  submit: "Envoyer sur WhatsApp",
+  sent: "Message envoyé !",
+  waGreeting: "Bonjour Altigo ! Je passe commande :",
+  waHint: "Vous serez redirigé vers WhatsApp pour finaliser la commande.",
+  errors: {
+    name: "Le nom est requis (minimum 2 caractères).",
+    phone: "Numéro invalide (9 à 15 chiffres).",
+    size: "Veuillez sélectionner une taille.",
   },
-  // Add to your fr object
+},
+
 footer: {
   description: "Vêtements de sport premium conçus pour les athlètes qui repoussent les limites.",
   quickLinks: "Liens Rapides",

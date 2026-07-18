@@ -9,10 +9,10 @@ import detail2 from "../assets/detail-2.png";
 gsap.registerPlugin(ScrollTrigger);
 
 const productDetails = [
-  { icon: Feather, key: "lightweight" },
-  { icon: Wind, key: "moistureWicking" },
-  { icon: Shield, key: "stretch" },
-  { icon: Zap, key: "durable" },
+  { icon: Feather, key: "quality" },
+  { icon: Wind, key: "comfort" },
+  { icon: Shield, key: "performance" },
+  { icon: Zap, key: "design" },
 ];
 
 export default function Features() {

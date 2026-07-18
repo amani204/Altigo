@@ -5,7 +5,8 @@ import { useLanguage } from "../../context/LanguageContext";
 import PrimaryButton from "../ui/PrimaryButton";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-
+import logo1 from "../../assets/logo1.png";
+import logo2 from "../../assets/logo2.png";
 gsap.registerPlugin(ScrollToPlugin);
 
 const InstagramIcon = ({ size = 18, className = "" }) => (
@@ -88,20 +89,24 @@ export default function Navbar() {
   }, [isOpen]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-altigo-border bg-altigo-bg/80 backdrop-blur-md">
+    <header dir="ltr" className="fixed top-0 left-0 right-0 z-50 border-b border-altigo-border bg-altigo-bg/80 backdrop-blur-md">
       <nav className="relative mx-auto flex items-center justify-between px-5 py-4 lg:px-8 max-w-7xl">
         
         {/* LEFT: Logo */}
-        <a 
-          href="#home" 
-          onClick={(e) => handleScroll(e, "#home")}
-          className="flex items-center gap-2 text-2xl font-display font-bold text-altigo-text hover:text-altigo-teal transition-colors duration-300"
-        >
-          <span className="text-altigo-teal">LOGO</span>
-        </a>
+<a 
+  href="#home" 
+  onClick={(e) => handleScroll(e, "#home")}
+  className="flex items-center gap-2"
+>
+  <img
+    src={theme === "dark" ? logo1 : logo2}
+    alt="Altigo"
+    className="h-12 w-auto object-contain"
+  />
+</a>
 
         {/* CENTER: Nav links */}
-        <ul className="hidden items-center gap-1 lg:flex absolute left-1/2 -translate-x-1/2">
+        <ul dir="ltr" className="hidden items-center gap-1 lg:flex absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link) => (
             <li key={link.key}>
               <a
@@ -110,8 +115,8 @@ export default function Navbar() {
                 className="relative px-4 py-2 text-sm font-medium text-altigo-muted transition-colors hover:text-altigo-text rounded-[5px] hover:bg-altigo-surface/50 group block"
               >
                 {t?.nav?.[link.key] || link.key}
-                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-altigo-teal transition-all duration-300 group-hover:w-1/2"></span>
-                <span className="absolute bottom-1 right-1/2 translate-x-1/2 w-0 h-[2px] bg-altigo-teal transition-all duration-300 group-hover:w-1/2"></span>
+                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-altigo-teal transition-all duration-300 group-hover:w-1/2"></span>
+                <span className="absolute bottom-1 right-1/2 translate-x-1/2 w-0 h-0.5 bg-altigo-teal transition-all duration-300 group-hover:w-1/2"></span>
               </a>
             </li>
           ))}
@@ -120,7 +125,7 @@ export default function Navbar() {
         {/* RIGHT: Controls & Socials */}
         <div className="flex items-center gap-3">
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/altigo_dz"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"

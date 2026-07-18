@@ -1,5 +1,5 @@
 export default function SecondaryButton({ children, onClick, href, className = '', ...props }) {
-  const baseClasses = `group flex items-center justify-center gap-3 bg-transparent text-altigo-text hover:text-altigo-teal border-2 border-altigo-border hover:border-altigo-teal font-semibold uppercase tracking-[0.15em] text-xs py-2.5 px-6 transition-all duration-300 rounded-none w-full sm:w-auto ${className}`;
+  const baseClasses = `group flex items-center justify-center gap-3 bg-transparent text-altigo-text hover:text-altigo-teal border-2 border-altigo-border hover:border-altigo-teal font-semibold uppercase tracking-[0.15em] text-xs py-2.5 px-6 transition-all duration-300 rounded-[5px] w-full sm:w-auto ${className}`;
 
   const content = (
     <>
