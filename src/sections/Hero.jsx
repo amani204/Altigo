@@ -7,9 +7,9 @@ import SecondaryButton from "../components/ui/SecondaryButton";
 import { Star } from "lucide-react";
 
 // Background assets – replace with your own
-import imageLeft from "../assets/detail-2.png";
+import imageLeft from "../assets/detail-2.PNG";
 import centerVideo from "../assets/v2.mp4";
-import imageRight from "../assets/detail-2.png";
+import imageRight from "../assets/detail-2.PNG";
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -90,7 +90,7 @@ export default function Hero() {
           <PrimaryButton href="#contact">{t.hero.cta}</PrimaryButton>
           <SecondaryButton
             href="#product"
-            className="!border-white/40 !text-white hover:!text-altigo-teal hover:!border-altigo-teal"
+            className="border-white/40! text-white! hover:text-altigo-teal! hover:border-altigo-teal!"
           >
             {t.hero.secondaryCta}
           </SecondaryButton>
