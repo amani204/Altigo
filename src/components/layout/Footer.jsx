@@ -8,7 +8,7 @@ export default function Footer() {
   const { t } = useLanguage();
   const { theme } = useTheme(); 
 
-  const whatsappNumber = "+213672086781"; 
+  const whatsappNumber = "213781721027"; 
   const whatsappLink = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}`;
   const instagramLink = "https://www.instagram.com/altigo_dz/"; 
 
@@ -35,7 +35,7 @@ export default function Footer() {
               className="inline-flex items-center gap-2 mb-4"
             >
               <img
-                src={theme === "dark" ? logo1 : logo2}
+                src={theme === "dark" ? logo2 : logo1}
                 alt="Altigo"
                 className="h-14 w-auto object-contain"
               />

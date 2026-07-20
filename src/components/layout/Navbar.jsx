@@ -99,9 +99,9 @@ export default function Navbar() {
   className="flex items-center gap-2"
 >
   <img
-    src={theme === "dark" ? logo1 : logo2}
+    src={theme === "dark" ? logo2 : logo1}
     alt="Altigo"
-    className="h-12 w-auto object-contain"
+    className="h-10 w-auto object-contain"
   />
 </a>
 

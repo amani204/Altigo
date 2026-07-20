@@ -1,9 +1,9 @@
 import { MessageCircle } from "lucide-react";
 import { useLanguage } from "../../context/LanguageContext";
-// Replace with your actual WhatsApp number (international format, no + or spaces)
-const WHATSAPP_NUMBER = "213672086781";
 
-// Generic greeting – you can adjust per language if you wish
+const WHATSAPP_NUMBER = "213781721027";
+
+// Generic greeting 
 const getGreeting = (lang) => {
   const messages = {
     fr: "Bonjour ! Je suis intéressé(e) par les produits Altigo.",

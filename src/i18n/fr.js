@@ -76,7 +76,7 @@ const fr = {
       },
       q2: {
         q: "Quel est le prix du produit ?",
-        a: "Le prix du pantalon de sport est de 34 000 DZD. Un tarif très compétitif pour une qualité supérieure et un design moderne.",
+        a: "Le prix du pantalon de sport est de 3400 DZD. Un tarif très compétitif pour une qualité supérieure et un design moderne.",
       },
       q3: {
         q: "Quelles sont les couleurs disponibles ?",
@@ -84,7 +84,7 @@ const fr = {
       },
       q4: {
         q: "Quels sont les délais de livraison ?",
-        a: "Nous livrons dans l'ensemble des 69 wilayas. Les délais de livraison varient entre 2 et 5 jours ouvrables selon la région.",
+        a: "Nous livrons dans l'ensemble des 58 wilayas. Les délais de livraison varient entre 2 et 5 jours ouvrables selon la région.",
       },
       q5: {
         q: "Le produit est-il authentique et importé ?",
